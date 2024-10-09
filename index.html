@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8DJJ9BBC96"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-8DJJ9BBC96');
+  </script>
+  <meta charset="utf-8">
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg"/>
+  <meta name="description" content="CoTracker++: Simpler and Better Point Tracking by Pseudo-Labelling Real Videos">
+  <meta name="keywords" content="CoTracker">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CoTracker++: Simpler and Better Point Tracking by Pseudo-Labelling Real Videos</title>
+
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+
+</head>
+
+<body>
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 style="font-size: 43px" class="title is-1 publication-title">CoTracker++: Simpler and Better Point Tracking by Pseudo-Labelling Real Videos
+            </h1>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <a href="https://nikitakaraevv.github.io/">Nikita Karaev</a><sup>1,2</sup>,</span>
+              <span class="author-block">
+                <a href="https://www.linkedin.com/in/lvoursl/?originalSubdomain=uk">Iurii Makarov</a><sup>1</sup>,</span>
+              <span class="author-block">
+                <a href="https://jytime.github.io/">Jianyuan Wang</a><sup>1,2</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://nneverova.github.io/">Natalia Neverova</a><sup>1</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://www.robots.ox.ac.uk/~vedaldi/">Andrea Vedaldi</a><sup>1</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://chrirupp.github.io/">Christian Rupprecht</a><sup>2</sup>
+              </span>
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><sup>1</sup>Meta AI</span>
+              <span class="author-block"><sup>2</sup>Visual Geometry Group, University of Oxford</span>
+            </div>
+
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- PDF Link. -->
+                <span class="link-block">
+                  <a href="" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                    </span>
+                    <span>Paper</span>
+                  </a>
+                </span>
+                <!-- Code Link. -->
+                <span class="link-block">
+                  <a href="https://github.com/facebookresearch/co-tracker"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="https://huggingface.co/spaces/facebook/cotracker"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span>🤗 Demo</span>
+                  </a>
+                </span>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="hero is-light is-small">
+    <div class="hero-body">
+      <div class="container" id="container-carousel 1">
+        <div id="results-carousel 1" class="carousel results-carousel">
+          <div class="item item-cat_2">
+            <video style="width: 637px;" poster="" id="cat_2" autoplay muted loop playsinline
+              height="100%">
+              <source src="./videos/teaser_ours_offline/cat_2.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="item item-pillow">
+            <video style="width: 637px;" poster="" id="pillow" autoplay muted loop playsinline height="100%">
+              <source src="./videos/teaser_ours_offline/pillow.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="item item-backpack">
+            <video style="width: 637px;" poster="" id="backpack" autoplay muted loop playsinline height="100%">
+              <source src="./videos/teaser_ours_offline/backpack.mp4" type="video/mp4">
+            </video>
+          </div>
+
+          <div class="item item-cat_1">
+            <video style="width: 637px;" poster="" id="cat_1" autoplay muted loop playsinline height="100%">
+              <source src="./videos/teaser_ours_offline/cat_1.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="item item-teddy">
+            <video style="width: 637px;" poster="" id="teddy" autoplay muted loop playsinline height="100%">
+              <source src="./videos/teaser_ours_offline/teddy.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="hero is-small">
+    
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <!-- Abstract. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Overview</h2>
+          <div class="content has-text-justified">
+            <p>
+              Most state-of-the-art point trackers are trained on synthetic data due to the difficulty of annotating real videos for this task.
+              However, this can result in suboptimal performance due to the statistical gap between synthetic and real videos.
+              In order to understand these issues better, we introduce CoTracker++, comprising a new tracking model and a new semi-supervised training recipe.
+             
+            </p>
+            <p></p>
+            This allows real videos without annotations to be used during training by generating pseudo-labels using off-the-shelf teachers.
+            The new model eliminates or simplifies components from previous trackers, resulting in a simpler and often smaller architecture.
+            This training scheme is much simpler than prior work and achieves better results using 1,000 times less data.
+            
+            </p>
+            <p>
+              We further study the scaling behaviour to understand the impact of using more real unsupervised data in point tracking.
+            The model is available in online and offline variants and reliably tracks visible and occluded points.
+              We demonstrate qualitatively impressive tracking results, where points can be tracked for a long time even when they are occluded or leave the field of view.
+              Quantitatively, CoTracker outperforms all recent trackers on standard benchmarks, often by a substantial margin.
+            </p>
+          </div>
+        </div>
+      </div>
+      <!--/ Abstract. -->
+      <!-- Paper video. -->
+      <div class="hero-body">
+        <div class="container" id="container-carousel 1">
+          <div id="results-carousel-2" class="carousel results-carousel " >
+            <div class="item item-car-roundabout">
+              <video style="width: 637px;" poster="" id="car-roundabout" autoplay muted loop playsinline
+                height="100%">
+                <source src="./videos/teaser3/hike.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="item item-zoom-in">
+              <video style="width: 637px;" poster="" id="zoom-in" autoplay muted loop playsinline height="100%">
+                <source src="./videos/teaser3/hockey.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="item item-fish">
+              <video style="width: 637px;" poster="" id="fish" autoplay muted loop playsinline height="100%">
+                <source src="./videos/teaser3/horsejump-high.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="item item-car-roundabout">
+              <video style="width: 637px;" poster="" id="car-roundabout" autoplay muted loop playsinline
+                height="100%">
+                <source src="./videos/teaser3/koala.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="item item-zoom-in">
+              <video style="width: 637px;" poster="" id="zoom-in" autoplay muted loop playsinline height="100%">
+                <source src="./videos/teaser3/lab-coat.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="item item-fish">
+              <video style="width: 637px;" poster="" id="fish" autoplay muted loop playsinline height="100%">
+                <source src="./videos/teaser3/lady-running.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="item item-car-roundabout">
+              <video style="width: 637px;" poster="" id="car-roundabout" autoplay muted loop playsinline
+                height="100%">
+                <source src="./videos/teaser3/libby.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="item item-zoom-in">
+              <video style="width: 637px;" poster="" id="zoom-in" autoplay muted loop playsinline height="100%">
+                <source src="./videos/teaser3/lindy-hop.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="item item-fish">
+              <video style="width: 637px;" poster="" id="fish" autoplay muted loop playsinline height="100%">
+                <source src="./videos/teaser3/loading.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="item item-fish">
+              <video style="width: 637px;" poster="" id="fish" autoplay muted loop playsinline height="100%">
+                <source src="./videos/teaser3/motorbike.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="item item-fish">
+              <video style="width: 637px;" poster="" id="fish" autoplay muted loop playsinline height="100%">
+                <source src="./videos/teaser3/pigs.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="columns is-centered has-text-centered">
+        <div class="publication-video">
+          <h2 class="title is-4">Tracking through occlusions</h2>
+          <p>We track points sampled on the first frame. Only CoTracker and CoTracker++ can track through occlusions. 
+            However, CoTracker loses tracked points at the end while CoTracker++ is still tracking them. </p>
+
+          <table>
+            <tbody>
+              <tr style="padding:0px">
+                <td style="padding-right:1%;width:24%;vertical-align:middle">
+                  <video onloadstart="this.playbackRate = 0.8;"controls="" style="width:100%;max-width:100%" autoplay="true" loop="true" playsinline="true"
+                    muted="true">
+                    <source src="./videos/teaser2/bmx_bumps_bootstapir.mp4" type="video/mp4">Sorry, your browser doesn't support embedded
+                    videos.
+                  </video>
+                </td>
+                <td style="padding-right:1%;width:24%;vertical-align:middle">
+                  <video onloadstart="this.playbackRate = 0.8;"controls="" style="width:100%;max-width:100%" autoplay="true" loop="true" playsinline="true"
+                    muted="true">
+                    <source src="./videos/teaser2/bmx_bumps_locotrack.mp4" type="video/mp4">Sorry, your browser doesn't support
+                    embedded
+                    videos.
+                  </video>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <table
+          style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+          <tbody>
+            <tr style="padding:0px">
+              <td style="padding-right:1%;width:24%;vertical-align:middle">
+                <div align="center">BootsTAPIR</div>
+              </td>
+              <td style="padding-right:1%;width:24%;vertical-align:middle">
+                <div align="center">LocoTrack</div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+          <table>
+            <tbody>
+              <tr style="padding:0px">
+                <td style="padding-right:1%;width:24%;vertical-align:middle">
+                  <video onloadstart="this.playbackRate = 0.8;"controls="" style="width:100%;max-width:100%" autoplay="true" loop="true" playsinline="true"
+                    muted="true">
+                    <source src="./videos/teaser2/bmx_bumps_cotracker.mp4" type="video/mp4">Sorry, your browser doesn't support
+                    embedded
+                    videos.
+                  </video>
+                </td>
+                <td style="padding-right:1%;width:24%;vertical-align:middle">
+                  <video onloadstart="this.playbackRate = 0.8;"controls="" style="width:100%;max-width:100%" autoplay="true" loop="true" playsinline="true"
+                    muted="true">
+                    <source src="./videos/teaser2/bmx_bumps_ours_offline.mp4" type="video/mp4">Sorry, your browser doesn't support
+                    embedded
+                    videos.
+                  </video>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <table
+          style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+          <tbody>
+            <tr style="padding:0px">
+              <td style="padding-right:1%;width:24%;vertical-align:middle">
+                <div align="center">CoTracker</div>
+              </td>
+              <td style="padding-right:1%;width:24%;vertical-align:middle">
+                <div align="center"> <b>Ours offline</b></div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        </div>
+      </div>
+      <div class="columns is-centered has-text-centered">
+        <div class="publication-video">
+          <h2 class="title is-4">Object-centric tracking on a regular grid</h2>
+          <p>We track 10k points sampled on a regular grid starting from the initial video frame.
+            Since the points are grid-sampled, tracks without significant transformations should maintain grid patterns in future frames. 
+            LocoTrack and CoTracker++ tracks are better aligned than BootsTAPIR tracks. Neither LocoTrack nor BootsTAPIR can track through occlusions. 
+            They also lose more background and object points than CoTracker++.</p>
+           
+            
+          
+          <table>
+            <tbody>
+              <tr style="padding:0px">
+                <td style="padding-right:1%;width:32%;vertical-align:middle">
+                  <video onloadstart="this.playbackRate = 0.8;"controls="" style="width:100%;max-width:100%" autoplay="true" loop="true" playsinline="true"
+                    muted="true">
+                    <source src="./videos/ours_bootstap_locotrack/longboard_bootstapir_100.mp4" type="video/mp4">Sorry, your browser doesn't support embedded
+                    videos.
+                  </video>
+                </td>
+                <td style="padding-right:1%;width:32%;vertical-align:middle">
+                  <video onloadstart="this.playbackRate = 0.8;"controls="" style="width:100%;max-width:100%" autoplay="true" loop="true" playsinline="true"
+                    muted="true">
+                    <source src="./videos/ours_bootstap_locotrack/longboard_locotrack_100.mp4" type="video/mp4">Sorry, your browser doesn't support
+                    embedded
+                    videos.
+                  </video>
+                </td>
+                <td style="padding-right:1%;width:32%;vertical-align:middle">
+                  <video onloadstart="this.playbackRate = 0.8;"controls="" style="width:100%;max-width:100%" autoplay="true" loop="true" playsinline="true"
+                    muted="true">
+                    <source src="./videos/ours_bootstap_locotrack/longboard_ours_offline_finetuned_100.mp4" type="video/mp4">Sorry, your browser doesn't support
+                    embedded
+                    videos.
+                  </video>
+                </td>
+              </tr>
+              <tr style="padding:0px">
+                <td style="padding-right:1%;width:32%;vertical-align:middle">
+                  <video controls="" style="width:100%;max-width:100%" autoplay="true" loop="true" playsinline="true"
+                    muted="true">
+                    <source src="./videos/ours_bootstap_locotrack/rhino_bootstapir_100.mp4" type="video/mp4">Sorry, your browser doesn't support embedded
+                    videos.
+                  </video>
+                </td>
+                <td style="padding-right:1%;width:32%;vertical-align:middle">
+                  <video controls="" style="width:100%;max-width:100%" autoplay="true" loop="true" playsinline="true"
+                    muted="true">
+                    <source src="./videos/ours_bootstap_locotrack/rhino_locotrack_100.mp4" type="video/mp4">Sorry, your browser doesn't support
+                    embedded
+                    videos.
+                  </video>
+                </td>
+                <td style="padding-right:1%;width:32%;vertical-align:middle">
+                  <video controls="" style="width:100%;max-width:100%" autoplay="true" loop="true" playsinline="true"
+                    muted="true">
+                    <source src="./videos/ours_bootstap_locotrack/rhino_ours_offline_finetuned_100.mp4" type="video/mp4">Sorry, your browser doesn't support
+                    embedded
+                    videos.
+                  </video>
+                </td>
+              </tr>
+              <tr style="padding:0px">
+                <td style="padding-right:1%;width:32%;vertical-align:middle">
+                  <video onloadstart="this.playbackRate = 0.8;" controls="" style="width:100%;max-width:100%" autoplay="true" loop="true" playsinline="true"
+                    muted="true">
+                    <source src="./videos/ours_bootstap_locotrack/stroller_bootstapir_100.mp4" type="video/mp4">Sorry, your browser doesn't support embedded
+                    videos.
+                  </video>
+                </td>
+                <td style="padding-right:1%;width:32%;vertical-align:middle">
+                  <video onloadstart="this.playbackRate = 0.8;"controls="" style="width:100%;max-width:100%" autoplay="true" loop="true" playsinline="true"
+                    muted="true">
+                    <source src="./videos/ours_bootstap_locotrack/stroller_locotrack_100.mp4" type="video/mp4">Sorry, your browser doesn't support
+                    embedded
+                    videos.
+                  </video>
+                </td>
+                <td style="padding-right:1%;width:32%;vertical-align:middle">
+                  <video onloadstart="this.playbackRate = 0.8;" controls="" style="width:100%;max-width:100%" autoplay="true" loop="true" playsinline="true"
+                    muted="true">
+                    <source src="./videos/ours_bootstap_locotrack/stroller_ours_offline_finetuned_100.mp4" type="video/mp4">Sorry, your browser doesn't support
+                    embedded
+                    videos.
+                  </video>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <table
+            style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+            <tbody>
+              <tr style="padding:0px">
+                <td style="padding-right:1%;width:32%;vertical-align:middle">
+                  <div align="center">BootsTAPIR</div>
+                </td>
+                <td style="padding-right:1%;width:32%;vertical-align:middle">
+                  <div align="center">LocoTrack</div>
+                </td>
+                <td style="padding-right:1%;width:32%;vertical-align:middle">
+                  <div align="center"> <b>Ours offline</b></div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+      <div class="columns is-centered has-text-centered">
+        <div class="publication-video">
+          <h2 class="title is-4">The effect of scaling</h2>
+          <p>Scaling helps improve both online and offline models, while in these examples the online model benefits from scaling more than the offline one.</p>
+           
+          
+          <table>
+            <tbody>
+              <tr style="padding:0px">
+                <td style="padding-right:1%;width:24%;vertical-align:middle">
+                  <video controls="" style="width:100%;max-width:100%" autoplay="true" loop="true" playsinline="true"
+                    muted="true">
+                    <source src="./videos/offline_online_base_finetuned/robotap_120_offline_base.mp4" type="video/mp4">Sorry, your browser doesn't support embedded
+                    videos.
+                  </video>
+                </td>
+                <td style="padding-right:1%;width:24%;vertical-align:middle">
+                  <video controls="" style="width:100%;max-width:100%" autoplay="true" loop="true" playsinline="true"
+                    muted="true">
+                    <source src="./videos/offline_online_base_finetuned/robotap_120_offline_scaled.mp4" type="video/mp4">Sorry, your browser doesn't support
+                    embedded
+                    videos.
+                  </video>
+                </td>
+                <td style="border-left: 2px solid #000; padding-right:1%;width:24%;vertical-align:middle">
+                  <video controls="" style="width:100%;max-width:100%" autoplay="true" loop="true" playsinline="true"
+                    muted="true">
+                    <source src="./videos/offline_online_base_finetuned/robotap_120_online_base.mp4" type="video/mp4">Sorry, your browser doesn't support
+                    embedded
+                    videos.
+                  </video>
+                </td>
+                <td style="padding-right:1%;width:24%;vertical-align:middle">
+                  <video controls="" style="width:100%;max-width:100%" autoplay="true" loop="true" playsinline="true"
+                    muted="true">
+                    <source src="./videos/offline_online_base_finetuned/robotap_120_online_scaled.mp4" type="video/mp4">Sorry, your browser doesn't support
+                    embedded
+                    videos.
+                  </video>
+                </td>
+              </tr>
+              <tr style="padding:0px">
+                <td style="padding-right:1%;width:24%;vertical-align:middle">
+                  <video controls="" style="width:100%;max-width:100%" autoplay="true" loop="true" playsinline="true"
+                    muted="true">
+                    <source src="./videos/offline_online_base_finetuned/robotap_95_offline_base.mp4" type="video/mp4">Sorry, your browser doesn't support embedded
+                    videos.
+                  </video>
+                </td>
+                <td style="padding-right:1%;width:24%;vertical-align:middle">
+                  <video controls="" style="width:100%;max-width:100%" autoplay="true" loop="true" playsinline="true"
+                    muted="true">
+                    <source src="./videos/offline_online_base_finetuned/robotap_95_offline_scaled.mp4" type="video/mp4">Sorry, your browser doesn't support
+                    embedded
+                    videos.
+                  </video>
+                </td>
+                <td style="border-left: 2px solid #000;padding-right:1%;width:24%;vertical-align:middle">
+                  <video controls="" style="width:100%;max-width:100%" autoplay="true" loop="true" playsinline="true"
+                    muted="true">
+                    <source src="./videos/offline_online_base_finetuned/robotap_95_online_base.mp4" type="video/mp4">Sorry, your browser doesn't support
+                    embedded
+                    videos.
+                  </video>
+                </td>
+                <td style="padding-right:1%;width:24%;vertical-align:middle">
+                  <video controls="" style="width:100%;max-width:100%" autoplay="true" loop="true" playsinline="true"
+                    muted="true">
+                    <source src="./videos/offline_online_base_finetuned/robotap_95_online_scaled.mp4" type="video/mp4">Sorry, your browser doesn't support
+                    embedded
+                    videos.
+                  </video>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <table
+            style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+            <tbody>
+              <tr style="padding:0px">
+                  <td style="padding-right:1%;width:24%;vertical-align:middle">
+                      <div align="center">Ours online base</div>
+                  </td>
+                  <td style="padding-right:1%;width:24%;vertical-align:middle">
+                      <div align="center"> <b>Ours online scaled</b></div>
+                  </td>
+                  <td style=" padding-right:1%;width:24%;vertical-align:middle">
+                      <div align="center">Ours offline base</div>
+                  </td>
+                  <td style="padding-right:1%;width:24%;vertical-align:middle">
+                      <div align="center"><b>Ours offline scaled</b></div>
+                  </td>
+              </tr>
+          </tbody>
+          </table>
+
+        </div>
+      </div>
+      <div class="columns is-centered has-text-centered">
+        <div class="publication-video">
+          <h2 class="title is-4">Failure cases</h2>
+          <p>Featureless surfaces is a common mode of failure: the model cannot track points sampled in the sky or on the surface of water.</p>
+            
+          <table>
+            <tbody>
+              <tr style="padding:0px">
+                <td style="padding-right:1%;width:32%;vertical-align:middle">
+                  <video controls="" style="width:100%;max-width:100%" autoplay="true" loop="true" playsinline="true"
+                    muted="true">
+                    <source src="./videos/fails/kid-football-fixed.mp4" type="video/mp4">Sorry, your browser doesn't support embedded
+                    videos.
+                  </video>
+                </td>
+                <td style="padding-right:1%;width:32%;vertical-align:middle">
+                  <video controls="" style="width:100%;max-width:100%" autoplay="true" loop="true" playsinline="true"
+                    muted="true">
+                    <source src="./videos/fails/mallard-water-fixed.mp4" type="video/mp4">Sorry, your browser doesn't support
+                    embedded
+                    videos.
+                  </video>
+                </td>
+                <td style="padding-right:1%;width:32%;vertical-align:middle">
+                  <video controls="" style="width:100%;max-width:100%" autoplay="true" loop="true" playsinline="true"
+                    muted="true">
+                    <source src="./videos/fails/miami-surf-fixed.mp4" type="video/mp4">Sorry, your browser doesn't support
+                    embedded
+                    videos.
+                  </video>
+                </td>
+              </tr>
+              
+              
+            </tbody>
+          </table>
+  
+        </div>
+      </div>
+      <!-- </div> -->
+    </div>
+  </section>
+
+
+  <section class="section" id="related">
+    <div class="container is-max-desktop">
+      <!-- Abstract. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-full-width">
+          <h2 class="title is-3">Related Links</h2>
+
+          <div class="content has-text-justified">
+            <p>
+              <a href="https://co-tracker.github.io//">CoTracker</a> is the first iteration of this work. In the follow-up, we significantly simplified the architecture and showed that it is possible to improve point trackers
+               by trainining them on real data with pseudo-labels produced by other synthetic-trained models. Check out CoTracker as well!
+            </p>
+            <p>
+              <a href="https://bootstap.github.io/">BootsTAPIR</a> is a bootstrapped version of <a href="https://deepmind-tapir.github.io/">TAPIR</a>,  
+              a feed-forward point tracker with a matching stage inspired by <a href="https://arxiv.org/abs/2211.03726">TAP-Vid</a> and a refinement stage inspired by <a href="https://particle-video-revisited.github.io/">PIPs</a>. The model
+              demonstrates accurate tracking of visible points, which improves after scaling. However, it struggles to predict the positions of occluded points.
+            </p>
+            <p>
+              <a href="https://cvlab-kaist.github.io/locotrack/">LocoTrack</a> is an efficient point-tracking model that accuractely tracks visible points. It introduces 4D correlations that we also use in the architecture of CoTracker++.
+            </p>
+            <p>
+              <a href="https://shape-of-motion.github.io/">Shape of Motion</a> is a test-time optimisation method for dynamic reconstrucion that proposes a new motion representation. It produces accurate 3D tracks and shows visuals with nice dynamic reconstructions.
+            </p>
+            <p>
+              <a href="https://vggsfm.github.io/">VGGSfM</a> is the first end-to-end differentiable structure-from-motion pipeline that outperforms traditional algorithms. Point tracking is one of its components. 
+            </p>
+           
+           
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <pre><code>@InProceedings{karaev2024cotracker3,
+    author    = {Nikita Karaev and Iurii Makarov and Jianyuan Wang and Natalia Neverova and Andrea Vedaldi and Christian Rupprecht},
+    title     = {{CoTracker++}: Simpler and Better Point Tracking by Pseudo-Labelling Real Videos},
+    journal   = {arxiv},
+    year      = {2024}
+  }</code></pre>
+    </div>
+  </section>
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+            <p>
+              This webpage template is adapted from <a href="https://co-tracker.github.io/">CoTracker</a>,
+              under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0 License</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+
+
+
+</body>
+
+</html>
