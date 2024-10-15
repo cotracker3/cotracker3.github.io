@@ -13,10 +13,10 @@
   </script>
   <meta charset="utf-8">
   <link rel="icon" type="image/svg+xml" href="./favicon.svg"/>
-  <meta name="description" content="CoTracker++: Simpler and Better Point Tracking by Pseudo-Labelling Real Videos">
+  <meta name="description" content="CoTracker3: Simpler and Better Point Tracking by Pseudo-Labelling Real Videos">
   <meta name="keywords" content="CoTracker">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>CoTracker++: Simpler and Better Point Tracking by Pseudo-Labelling Real Videos</title>
+  <title>CoTracker3: Simpler and Better Point Tracking by Pseudo-Labelling Real Videos</title>
 
 
   <link rel="stylesheet" href="./static/css/bulma.min.css">
@@ -38,7 +38,7 @@
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column has-text-centered">
-            <h1 style="font-size: 43px" class="title is-1 publication-title">CoTracker++: Simpler and Better Point Tracking by Pseudo-Labelling Real Videos
+            <h1 style="font-size: 43px" class="title is-1 publication-title">CoTracker3: Simpler and Better Point Tracking by Pseudo-Labelling Real Videos
             </h1>
             <div class="is-size-5 publication-authors">
               <span class="author-block">
@@ -150,7 +150,7 @@
             <p>
               Most state-of-the-art point trackers are trained on synthetic data due to the difficulty of annotating real videos for this task.
               However, this can result in suboptimal performance due to the statistical gap between synthetic and real videos.
-              In order to understand these issues better, we introduce CoTracker++, comprising a new tracking model and a new semi-supervised training recipe.
+              In order to understand these issues better, we introduce CoTracker, comprising a new tracking model and a new semi-supervised training recipe.
              
             </p>
             <p></p>
@@ -237,8 +237,8 @@
       <div class="columns is-centered has-text-centered">
         <div class="publication-video">
           <h2 class="title is-4">Tracking through occlusions</h2>
-          <p>We track points sampled on the first frame. Only CoTracker and CoTracker++ can track through occlusions. 
-            However, CoTracker loses tracked points at the end while CoTracker++ is still tracking them. </p>
+          <p>We track points sampled on the first frame. Only CoTracker and CoTracker3 can track through occlusions. 
+            However, CoTracker loses tracked points at the end while CoTracker3 is still tracking them. </p>
 
           <table>
             <tbody>
@@ -317,8 +317,8 @@
           <h2 class="title is-4">Object-centric tracking on a regular grid</h2>
           <p>We track 10k points sampled on a regular grid starting from the initial video frame.
             Since the points are grid-sampled, tracks without significant transformations should maintain grid patterns in future frames. 
-            LocoTrack and CoTracker++ tracks are better aligned than BootsTAPIR tracks. Neither LocoTrack nor BootsTAPIR can track through occlusions. 
-            They also lose more background and object points than CoTracker++.</p>
+            LocoTrack and CoTracker3 tracks are better aligned than BootsTAPIR tracks. Neither LocoTrack nor BootsTAPIR can track through occlusions. 
+            They also lose more background and object points than CoTracker3.</p>
            
             
           
@@ -580,7 +580,7 @@
               demonstrates accurate tracking of visible points, which improves after scaling. However, it struggles to predict the positions of occluded points.
             </p>
             <p>
-              <a href="https://cvlab-kaist.github.io/locotrack/">LocoTrack</a> is an efficient point-tracking model that accuractely tracks visible points. It introduces 4D correlations that we also use in the architecture of CoTracker++.
+              <a href="https://cvlab-kaist.github.io/locotrack/">LocoTrack</a> is an efficient point-tracking model that accuractely tracks visible points. It introduces 4D correlations that we also use in the architecture of CoTracker3.
             </p>
             <p>
               <a href="https://shape-of-motion.github.io/">Shape of Motion</a> is a test-time optimisation method for dynamic reconstrucion that proposes a new motion representation. It produces accurate 3D tracks and shows visuals with nice dynamic reconstructions.
@@ -603,7 +603,7 @@
       <h2 class="title">BibTeX</h2>
       <pre><code>@InProceedings{karaev2024cotracker3,
     author    = {Nikita Karaev and Iurii Makarov and Jianyuan Wang and Natalia Neverova and Andrea Vedaldi and Christian Rupprecht},
-    title     = {{CoTracker++}: Simpler and Better Point Tracking by Pseudo-Labelling Real Videos},
+    title     = {{CoTracker3}: Simpler and Better Point Tracking by Pseudo-Labelling Real Videos},
     journal   = {arxiv},
     year      = {2024}
   }</code></pre>
